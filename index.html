@@ -4,6 +4,8 @@
 		<title>Project: UMPIRE</title>
 		<link href="main.css" rel="stylesheet">
 		<link href="mobile.css" rel="" id="mobile-css">
+		<meta name="viewport" 
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
 		<script>
 			if (('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0))
 				document.getElementById('mobile-css').rel = 'stylesheet';
@@ -28,14 +30,14 @@
 			</div>
 		</div>
 		<div class="tab-content" id="iframe-game">
-			<button onclick="createGame()">Create Game</button><br>
-			<button onclick="endGame()">End Game</button><br>
-			<button onclick="exportData()">Export Data</button><br>
-			<button onclick="newPlayer()">New Player</button><br>
+			<button onclick="guiCreateGame()">Create Game</button><br>
+			<button onclick="guiEndGame()">End Game</button><br>
+			<button onclick="guiExportData()">Export Data</button><br>
+			<button onclick="guiNewPlayer()">New Player</button><br>
 		</div>
 		<div class="tab-content" id="iframe-inning">
 			Inning <span id="readout-inning-number">3</span><br>
-			<label for="outs">Outs: </label><input name="outs" type="number"><br>
+			<label for="outs">Outs: </label><input name="outs" type="number" min="0" max="3" step="1" value="0"><br>
 			<fieldset>
 				<legend>Kickers</legend>
 			</fieldset>
@@ -53,7 +55,7 @@
 			</fieldset>
 		</div>
 		<div class="tab-content" id="iframe-player">
-			<button onclick="createPlayer()">Create Player</button><br>
+			<button onclick="guiCreatePlayer()">Create Player</button><br>
 			<select>
 				<optgroup id="team-a-optgroup" label="Team A">
 					<option value="Owen">
@@ -78,14 +80,136 @@
 					</option>
 				</optgroup>
 			</select><br>
-			<button onclick="deleteCurrentPlayer()">Delete Player</button><br>
-			<input type="radio" name="captain"><label for="captain">Captain</label>
+			<button onclick="guiDeleteCurrentPlayer()">Delete Player</button><br>
+			<input type="radio" id="radio-button-captain"><label for="radio-button-captain">Captain</label><br>
+			<label for="text-input-player-name">Name: </label><input id="text-input-player-name" type="text" value="Owen"><br>
+			<br>
+			<h3>Statistics</h3>
+			<table>
+				<tr>
+					<td>
+						<label for="number-input-runs">Runs</label>
+					</td>
+					<td>
+						<input min="0" value="0" type="number" id="number-input-runs">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="number-input-kicks">Kicks</label>
+					</td>
+					<td>
+						<input min="0" value="0" type="number" id="number-input-kicks">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="number-input-outs">Outs</label>
+					</td>
+					<td>
+						<input min="0" value="0" type="number" id="number-input-outs">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="number-input-made-it">Made it</label>
+					</td>
+					<td>
+						<input min="0" value="0" type="number" id="number-input-made-it">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="number-input-fumbles">Fumbles</label>
+					</td>
+					<td>
+						<input min="0" value="0" type="number" id="number-input-fumbles">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="number-input-catches">Catches</label>
+					</td>
+					<td>
+						<input min="0" value="0" type="number" id="number-input-catches">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="number-input-fouls">Fouls</label>
+					</td>
+					<td>
+						<input min="0" value="0" type="number" id="number-input-fouls">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="number-input-outs-given">Outs Given</label>
+					</td>
+					<td>
+						<input min="0" value="0" type="number" id="number-input-outs-given">
+					</td>
+				</tr>
+			</table>
 		</div>
 		<div class="tab-content" id="iframe-teams">
-
+			<input name="team-selector" type="radio" id="radio-button-team-a"><label for="radio-button-team-a">Team A</label><br>
+			<input name="team-selector" type="radio" id="radio-button-team-b"><label for="radio-button-team-b">Team B</label><br>
+			<label for="text-input-team-name">Team name: </label><input type="text" value="Team A" id="text-input-team-name"><br>
+			Players<br>
+			<select id="select-players-on-team" size="5">
+				<option value="Owen">
+					Owen
+				</option>
+				<option value="Owen">
+					Fresh
+				</option>
+				<option value="Owen">
+					Aidan
+				</option>
+			</select><br>
+			<button onclick="guiSwapTeam()">Swap [SELECTEDPLAYER]'s Team</button>
 		</div>
 		<div class="tab-content" id="iframe-log">
-
+			<div id="log-container">
+				<span class="log-entry">[3:30 PM] Fresh caught the ball</span>
+				<span class="log-entry">[3:35 PM] Owen made it home</span>
+				<span class="log-entry">[3:40 PM] Abby got out</span>
+				<span class="log-entry">[3:40 PM] Devin got someone out</span>
+				<span class="log-entry">[0:00 XX] This is a really long log entry for testing text wrapping, I really nedd to be a long line of text!</span>
+				<span class="log-entry">[0:00 XX] Lorem ipsum</span>
+				<span class="log-entry">[0:00 XX] Lorem ipsum</span>
+				<span class="log-entry">[0:00 XX] </span>
+				<span class="log-entry">[0:00 XX] </span>
+				<span class="log-entry">[0:00 XX] Lorem ipsum</span>
+				<span class="log-entry">[0:00 XX] Lorem ipsum</span>
+				<span class="log-entry">[0:00 XX] Lorem ipsum</span>
+				<span class="log-entry">[0:00 XX] Lorem ipsum</span>
+				<span class="log-entry">[0:00 XX] Lorem ipsum</span>
+				<span class="log-entry">[0:00 XX] Lorem ipsum</span>
+				<span class="log-entry">[0:00 XX] Lorem ipsum</span>
+				<span class="log-entry">[0:00 XX] Lorem ipsum</span>
+				<span class="log-entry">[0:00 XX] Lorem ipsum</span>
+				<span class="log-entry">[0:00 XX] Lorem ipsum</span>
+				<span class="log-entry">[0:00 XX] Lorem ipsum</span>
+				<span class="log-entry">[0:00 XX] Lorem ipsum</span>
+				<span class="log-entry">[0:00 XX] Lorem ipsum</span>
+				<span class="log-entry">[0:00 XX] Lorem ipsum</span>
+				<span class="log-entry">[0:00 XX] Lorem ipsum</span>
+				<span class="log-entry">[0:00 XX] Lorem ipsum</span>
+				<span class="log-entry">[0:00 XX] Lorem ipsum</span>
+				<span class="log-entry">[0:00 XX] Lorem ipsum</span>
+				<span class="log-entry">[0:00 XX] Lorem ipsum</span>
+				<span class="log-entry">[0:00 XX] Lorem ipsum</span>
+				<span class="log-entry">[0:00 XX] Lorem ipsum</span>
+				<span class="log-entry">[0:00 XX] Lorem ipsum</span>
+				<span class="log-entry">[0:00 XX] Lorem ipsum</span>
+				<span class="log-entry">[0:00 XX] Lorem ipsum</span>
+			</div>
+			<div id="log-input-bar">
+				<input type="text" placeholder="Log entry..." id="text-input-log">
+				<button id="log-send-button">➔</button>
+			</div>
 		</div>
 		<script src="main.js"></script>
 	</body>
