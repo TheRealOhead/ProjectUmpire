@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Project: UMPIRE</title>
+		<link href="main.css" rel="stylesheet">
+		<link href="mobile.css" rel="" id="mobile-css">
+		<script>
+			if (('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0))
+				document.getElementById('mobile-css').rel = 'stylesheet';
+		</script>
+	</head>
+	<body>
+		<div id="tab-bar">
+			<div class="tab-button" id="tab-button-game">
+				GAME
+			</div>
+			<div class="tab-button" id="tab-button-inning">
+				INNING
+			</div>
+			<div class="tab-button" id="tab-button-player">
+				PLAYER
+			</div>
+			<div class="tab-button" id="tab-button-teams">
+				TEAMS
+			</div>
+			<div class="tab-button" id="tab-button-log">
+				LOG
+			</div>
+		</div>
+		<div class="tab-content" id="iframe-game">
+			<button onclick="createGame()">Create Game</button><br>
+			<button onclick="endGame()">End Game</button><br>
+			<button onclick="exportData()">Export Data</button><br>
+			<button onclick="newPlayer()">New Player</button><br>
+		</div>
+		<div class="tab-content" id="iframe-inning">
+			Inning <span id="readout-inning-number">3</span><br>
+			<label for="outs">Outs: </label><input name="outs" type="number"><br>
+			<fieldset>
+				<legend>Kickers</legend>
+			</fieldset>
+			<fieldset>
+				<legend>1st Base</legend>
+			</fieldset>
+			<fieldset>
+				<legend>2nd Base</legend>
+			</fieldset>
+			<fieldset>
+				<legend>3rd Base</legend>
+			</fieldset>
+			<fieldset>
+				<legend>Home</legend>
+			</fieldset>
+		</div>
+		<div class="tab-content" id="iframe-player">
+			<button onclick="createPlayer()">Create Player</button><br>
+			<select>
+				<optgroup id="team-a-optgroup" label="Team A">
+					<option value="Owen">
+						Owen
+					</option>
+					<option value="Fresh">
+						Fresh
+					</option>
+					<option value="Aidan">
+						Aidan
+					</option>
+				</optgroup>
+				<optgroup id="team-b-optgroup" label="Team B">
+					<option value="Jeff">
+						Jeff
+					</option>
+					<option value="Devin">
+						Devin
+					</option>
+					<option value="Abby">
+						Abby
+					</option>
+				</optgroup>
+			</select><br>
+			<button onclick="deleteCurrentPlayer()">Delete Player</button><br>
+			<input type="radio" name="captain"><label for="captain">Captain</label>
+		</div>
+		<div class="tab-content" id="iframe-teams">
+
+		</div>
+		<div class="tab-content" id="iframe-log">
+
+		</div>
+		<script src="main.js"></script>
+	</body>
+</html>

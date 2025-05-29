@@ -1,0 +1,70 @@
+#tab-bar {
+	display: flex;
+	height: 10vh;
+	overflow: scroll;
+	overflow-y: hidden;
+
+	background-color: var(--inactive-bg);
+	
+	position: sticky;
+
+	top: 0;
+	left: 0;
+}
+
+.tab-button {
+	height: 100%;
+	display: inline-block;
+
+	margin-left: .5vw;
+	margin-right: .5vw;
+
+	font-weight: bold;
+	font-size: 7vh;
+
+	border: var(--border-color) solid 4px;
+	border-bottom: none;
+	border-radius: 2vh 2vh 0 0;
+	
+	user-select: none;
+}
+
+.tab-button.current-tab {
+	background-color: var(--active-bg);
+}
+
+.tab-content {
+	height: 90vh;
+	width: 100vw;
+
+	display: hidden;
+
+	border: 0;
+}
+
+input[type=number] {
+	width: 50vw;
+}
+
+input[type=radio] {
+	transform: scale(2.5) translate(0, -.4vh);
+	width: 7vw;
+}
+
+body {
+	padding: 0;
+	margin: 0;
+
+	overflow-x: hidden;
+}
+
+* {
+	font-family: sans-serif;
+	box-sizing: border-box;
+
+	font-size: 5vh;
+
+	--border-color: black;
+	--active-bg: white;
+	--inactive-bg: gray;
+}
