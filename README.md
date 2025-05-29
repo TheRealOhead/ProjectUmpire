@@ -105,4 +105,4 @@ idk if that’s  all possible, but just something to help track players averages
 ## Style
 
 - Text inputs should look like normal text, but with a little pencil icon to the right. Tapping/clicking should turn it into a more traditional looking text input
-- Number inputs should have their up and down arrows easily pressable on mobile. The text part should also not be in a box
+- Number inputs should have their <s>up and down arrows easily pressable on mobile.</s> Turns out the "inner spin buttons" don't even exist on mobile. I will need to recreate them myself The text part should also not be in a box.
